@@ -1,4 +1,4 @@
-use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -120,7 +120,7 @@ export default function PLImmobilien() {
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pl-gold/50 text-pl-gold text-xs tracking-[3px] mb-6">
-              SEIT 2014 • DIETIKON &amp; ZÜRICH
+              SEIT 2014 • DIETIKON & ZÜRICH
             </div>
             
             <h1 className="font-serif text-[92px] md:text-[120px] leading-[0.92] tracking-[-6px] text-white mb-6">
@@ -165,7 +165,7 @@ export default function PLImmobilien() {
       <div className="bg-pl-dark py-5 text-pl-cream/70 text-xs tracking-[2px] flex justify-center gap-x-12 border-b border-white/10">
         <div>PAT RIZIA STEYSKAL</div>
         <div>MITGLIED SVIT</div>
-        <div>NETZWERK TOSKANA &amp; TESSIN</div>
+        <div>NETZWERK TOSKANA & TESSIN</div>
         <div>ÜBER 120 VERMITTELTE OBJEKTE</div>
       </div>
 
