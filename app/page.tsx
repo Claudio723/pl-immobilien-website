@@ -1,4 +1,4 @@
-"use client";
+use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -66,20 +66,35 @@ export default function PLImmobilien() {
 
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
-    
-    // Simulate API call / Netlify form handling
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    toast.success("Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.", {
-      description: "Ihre Anfrage wurde erfolgreich übermittelt.",
-      action: {
-        label: "Schliessen",
-        onClick: () => {},
-      },
-    });
-    
-    reset();
-    setIsSubmitting(false);
+
+    try {
+      const formData = new FormData();
+      formData.append("form-name", "contact");
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone || "");
+      formData.append("interest", data.interest || "");
+      formData.append("message", data.message);
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        toast.success("Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.", {
+          description: "Ihre Anfrage wurde erfolgreich übermittelt.",
+        });
+        reset();
+      } else {
+        toast.error("Etwas ist schiefgelaufen. Bitte versuche es später erneut.");
+      }
+    } catch (error) {
+      toast.error("Netzwerkfehler. Bitte später erneut versuchen.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -105,7 +120,7 @@ export default function PLImmobilien() {
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pl-gold/50 text-pl-gold text-xs tracking-[3px] mb-6">
-              SEIT 2014 • DIETIKON & ZÜRICH
+              SEIT 2014 • DIETIKON &amp; ZÜRICH
             </div>
             
             <h1 className="font-serif text-[92px] md:text-[120px] leading-[0.92] tracking-[-6px] text-white mb-6">
@@ -150,7 +165,7 @@ export default function PLImmobilien() {
       <div className="bg-pl-dark py-5 text-pl-cream/70 text-xs tracking-[2px] flex justify-center gap-x-12 border-b border-white/10">
         <div>PAT RIZIA STEYSKAL</div>
         <div>MITGLIED SVIT</div>
-        <div>NETZWERK TOSKANA & TESSIN</div>
+        <div>NETZWERK TOSKANA &amp; TESSIN</div>
         <div>ÜBER 120 VERMITTELTE OBJEKTE</div>
       </div>
 
@@ -324,6 +339,7 @@ export default function PLImmobilien() {
             className="space-y-8"
             data-netlify="true"
             name="contact"
+            method="POST"
           >
             <input type="hidden" name="form-name" value="contact" />
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Netlify Forms</title>
+</head>
+<body>
+  <!-- Hidden form for Netlify Forms detection (required for @netlify/plugin-nextjs v5) -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="name" type="text" />
+    <input name="email" type="email" />
+    <input name="phone" type="tel" />
+    <select name="interest">
+      <option value="">Bitte wählen...</option>
+      <option value="Kauf">Immobilie kaufen</option>
+      <option value="Verkauf">Immobilie verkaufen</option>
+      <option value="Vermietung">Vermieten / Verwaltung</option>
+      <option value="International">Auslandsimmobilie</option>
+      <option value="Sonstiges">Sonstiges</option>
+    </select>
+    <textarea name="message"></textarea>
+    <!-- Honeypot field -->
+    <input name="bot-field" type="text" style="display:none" />
+  </form>
+</body>
+</html>
