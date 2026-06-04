@@ -2,25 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --gold: #c5a26f; }
+:root {
+  --gold: #c5a26f;
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
 
-body { font-feature-settings: "kern" 1, "liga" 1, "calt" 1; }
+body {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+}
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #c5a26f; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #9f5f4a; }
+/* === Premium Luxury Design System === */
 
-.btn-primary { @apply inline-flex items-center justify-center px-8 py-4 bg-pl-dark text-pl-cream font-medium tracking-[1px] text-sm uppercase transition-all duration-300 hover:bg-pl-gold hover:text-pl-dark border border-pl-dark hover:border-pl-gold; }
-.btn-secondary { @apply inline-flex items-center justify-center px-8 py-4 border border-pl-dark text-pl-dark font-medium tracking-[1px] text-sm uppercase transition-all duration-300 hover:bg-pl-dark hover:text-pl-cream; }
+/* Elegant scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5a26f;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9f5f4a;
+}
 
-.property-card { transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
-.property-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: 0 30px 70px -15px rgb(15 23 42 / 0.25); }
-.property-image { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-.property-card:hover .property-image { transform: scale(1.08); }
+/* === Refined Typography === */
+h1, h2, h3 {
+  font-feature-settings: "kern" 1, "liga" 1, "tnum" 1;
+}
 
-.reveal { opacity: 0; transform: translateY(40px); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* === Luxury Buttons (more refined) === */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-9 py-[17px] bg-pl-dark text-pl-cream font-medium tracking-[1.5px] text-xs uppercase transition-all duration-300 hover:bg-pl-gold hover:text-pl-dark border border-pl-dark hover:border-pl-gold active:scale-[0.985];
+}
 
-.modal { animation: modalPop 0.4s cubic-bezier(0.23, 1.0, 0.32, 1); }
-@keyframes modalPop { from { opacity: 0; transform: scale(0.96) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-9 py-[17px] border border-pl-dark/80 text-pl-dark font-medium tracking-[1.5px] text-xs uppercase transition-all duration-300 hover:bg-pl-dark hover:text-pl-cream hover:border-pl-dark;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center px-6 py-3 text-sm tracking-widest text-pl-dark/70 hover:text-pl-gold transition-colors border-b border-transparent hover:border-pl-gold/50;
+}
+
+/* === Premium Property Cards === */
+.property-card {
+  transition: transform 0.5s var(--ease-out-expo), 
+              box-shadow 0.5s var(--ease-out-expo),
+              border-color 0.3s ease;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.property-card:hover {
+  transform: translateY(-16px);
+  box-shadow: 0 40px 90px -20px rgb(15 23 42 / 0.18);
+  border-color: #c5a26f;
+}
+
+.property-image {
+  transition: transform 0.7s var(--ease-out-expo);
+}
+
+.property-card:hover .property-image {
+  transform: scale(1.085);
+}
+
+/* === Section Styling === */
+.section {
+  @apply py-20 md:py-28;
+}
+
+.section-header {
+  @apply mb-14 md:mb-16 text-center;
+}
+
+/* === Refined Modal === */
+.modal {
+  animation: modalEnter 0.4s var(--ease-out-expo);
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Scroll Progress / Subtle Effects === */
+.glass {
+  background: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(20px);
+}
+
+/* === Modern Filter Buttons === */
+.filter-btn {
+  @apply px-6 py-3 text-xs tracking-[1.5px] uppercase border border-pl-dark/20 transition-all duration-200 hover:border-pl-gold hover:text-pl-gold;
+}
+
+.filter-btn.active {
+  @apply bg-pl-gold text-pl-dark border-pl-gold;
+}
+
+/* === Testimonial Cards === */
+.testimonial-card {
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+}
