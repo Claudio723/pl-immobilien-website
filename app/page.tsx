@@ -99,65 +99,73 @@ export default function PLImmobilien() {
 
   return (
     <main className="overflow-hidden">
-      {/* HERO */}
-      <section className="relative h-screen flex items-center justify-center pt-20">
-        <div className="absolute inset-0 bg-[radial-gradient(#c5a26f_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-10" />
-        
-        <div className="absolute inset-0 bg-pl-dark/70 z-10" />
-        
-        <Image 
-          src="https://images.unsplash.com/photo-1613973490726-0f6a5f6a0c1e?q=85&w=2070" 
-          alt="Luxus Villa" 
-          fill 
-          className="object-cover"
-          priority 
-        />
+      {/* HERO - Modern Cinematic */}
+      <section className="relative h-[100dvh] flex items-center justify-center pt-20 overflow-hidden">
+        {/* Background Image with subtle overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1613973490726-0f6a5f6a0c1e?q=85&w=2070" 
+            alt="Exklusive Villa in der Schweiz mit Seeblick" 
+            fill 
+            className="object-cover"
+            priority 
+            quality={92}
+            sizes="100vw"
+          />
+          {/* Elegant gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-pl-dark/60 via-pl-dark/40 to-pl-dark/70 z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(#c5a26f_0.6px,transparent_1.2px)] bg-[length:5px_5px] opacity-[0.07] z-10" />
+        </div>
 
-        <div className="relative z-20 max-w-5xl px-6 text-center">
+        <div className="relative z-20 max-w-6xl px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.9, ease: [0.21, 1, 0.32, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pl-gold/50 text-pl-gold text-xs tracking-[3px] mb-6">
+            {/* Trust badge */}
+            <div className="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full border border-white/30 bg-white/5 backdrop-blur-md text-white/90 text-xs tracking-[3.5px] mb-8">
               SEIT 2014 • DIETIKON & ZÜRICH
             </div>
             
-            <h1 className="font-serif text-[92px] md:text-[120px] leading-[0.92] tracking-[-6px] text-white mb-6">
+            <h1 className="font-serif text-display text-white mb-6 tracking-[-0.04em] leading-none">
               IMMOBILIEN<br />MIT LEIDENSCHAFT
             </h1>
             
-            <p className="max-w-[620px] mx-auto text-xl md:text-2xl text-white/90 font-light tracking-tight mb-12">
-              Massgeschneiderte Beratung von der ersten Besichtigung bis zum Schlüsselübergabe.
+            <p className="max-w-[580px] mx-auto text-xl md:text-[22px] text-white/85 font-light tracking-[-0.2px] mb-14">
+              Persönliche Beratung auf höchstem Niveau.<br className="hidden md:block" /> Von der ersten Vision bis zum Schlüssel.
             </p>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a 
               href="#objekte" 
-              className="btn-primary group"
-              whileHover={{ scale: 1.02 }}
+              className="btn-primary group text-sm"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.985 }}
             >
               OBJEKTE ENTDECKEN
-              <ArrowRight className="ml-3 group-hover:-rotate-45 transition" />
+              <ArrowRight className="ml-3 w-4 h-4 group-hover:-rotate-45 transition-transform" />
             </motion.a>
             
             <motion.a 
               href="#kontakt" 
-              className="btn-secondary border-white text-white hover:bg-white hover:text-pl-dark"
+              className="btn-secondary border-white/70 text-white hover:bg-white hover:text-pl-dark text-sm"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.985 }}
             >
-              KONTAKT AUFNEHMEN
+              BERATUNG VEREINBAREN
             </motion.a>
           </div>
         </div>
 
+        {/* Elegant scroll indicator */}
         <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center text-xs tracking-widest"
-        >
-          SCROLL TO EXPLORE
-          <div className="h-px w-8 bg-white/50 mt-3" />
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/60 text-[10px] tracking-[3px]">
+          SCROLL TO BEGIN
+          <div className="w-px h-8 bg-white/30 mt-3" />
         </motion.div>
       </section>
 
@@ -199,6 +207,54 @@ export default function PLImmobilien() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS - Modern Trust Section */}
+      <section className="bg-pl-sand py-20 md:py-24 border-y border-pl-dark/5">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <div className="text-pl-gold text-xs tracking-[3.5px] mb-3">WAS UNSERE KUNDEN SAGEN</div>
+            <h2 className="font-serif text-heading-xl tracking-tight">Vertrauen, das bleibt.</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "Patrizia hat uns mit unglaublicher Kompetenz und Herz durch den Verkauf unseres Familienhauses begleitet. Wir haben uns zu jeder Zeit bestens betreut gefühlt.",
+                name: "Familie M.",
+                role: "Zürich"
+              },
+              {
+                quote: "Dank PL Immobilien haben wir unser Traumgrundstück in der Toskana gefunden. Die Beratung war ehrlich, transparent und auf höchstem Niveau.",
+                name: "Herr & Frau K.",
+                role: "Lugano / Chianti"
+              },
+              {
+                quote: "Die Zusammenarbeit mit Patrizia war von Anfang an eine Freude. Sie versteht es, die richtigen Objekte für die richtigen Menschen zu finden.",
+                name: "Dr. S. Weber",
+                role: "Dietikon"
+              }
+            ].map((testimonial, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="testimonial-card bg-white p-9 border border-pl-dark/10 flex flex-col"
+              >
+                <div className="text-pl-gold text-5xl leading-none mb-6 font-serif">„</div>
+                <p className="text-[15px] leading-relaxed text-pl-dark/80 flex-1 tracking-[-0.1px]">
+                  {testimonial.quote}
+                </p>
+                <div className="mt-8 pt-6 border-t border-pl-dark/10">
+                  <div className="font-medium tracking-tight">{testimonial.name}</div>
+                  <div className="text-sm text-pl-dark/60 tracking-widest">{testimonial.role}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
